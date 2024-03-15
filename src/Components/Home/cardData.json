@@ -1,0 +1,18 @@
+[
+    {
+      "cardTitle": "Connect your email service",
+      "cardText": "Connecting your email service is a breeze with our platform. Choose from a diverse range of email services. We support popular services like Gmail. Get started in just a few clicks and unlock the power of seamless email communication.",
+      "imageUrl": "./Assets/step1.svg"
+    },
+    {
+      "cardTitle": "View sent emails",
+      "cardText": "Easily access and review your sent emails through our intuitive interface. With just a few clicks, you can view the status, content, and recipients of your sent emails, providing you with valuable insights into your email outreach efforts.",
+      "imageUrl": "./Assets/step2.svg"
+    },
+    {
+      "cardTitle": "Send email from your code",
+      "cardText": "Now, you can effortlessly send emails right from your code. Allowing you to integrate email functionality seamlessly into your applications. Say goodbye to complicated setups and hello to hassle-free communication with your users.",
+      "imageUrl": "./Assets/step3.svg"
+    }
+  ]
+  

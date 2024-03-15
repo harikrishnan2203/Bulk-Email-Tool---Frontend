@@ -1,0 +1,37 @@
+<nav class="navbar">
+    <div class="container-fluid">
+      <a exact to="/" class="nav-logo">
+        <span>Bulk Email Tool</span>
+      </a>
+      <button class="navbar-toggler" type="button" aria-controls="offcanvasNavbar-expand-lg" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="offcanvas offcanvas-start" id="offcanvasNavbar-expand-lg" aria-labelledby="offcanvasNavbarLabel-expand-lg">
+        <div class="offcanvas-header">
+          <h5 class="offcanvas-title" id="offcanvasNavbarLabel-expand-lg">Bulk Mailing</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+          <ul class="nav justify-content-end flex-grow-1 pe-3">
+            <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="offcanvasNavbarDropdown-expand-lg" role="button" data-bs-toggle="dropdown" aria-expanded="false">Compose</a>
+              <ul class="dropdown-menu" aria-labelledby="offcanvasNavbarDropdown-expand-lg">
+                <li><a class="dropdown-item" href="/send-mail">Send Mail</a></li>
+                <li><a class="dropdown-item" href="/send-bulk-mail">Send Bulk Mails</a></li>
+              </ul>
+            </li>
+            <li class="nav-item"><a class="nav-link" href="/chart">Chart</a></li>
+            <li class="nav-item"><a class="nav-link" href="/sent-items">Sent Items</a></li>
+            <li class="nav-item"><a class="nav-link" href="/settings">Settings</a></li>
+          </ul>
+          <div class="btn-group">
+            <button class="btn btn-sm btn-primary btn-hover">Sign in</button>
+            <div class="vr m-1"></div>
+            <button class="btn btn-sm btn-secondary btn-hover">Sign up</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+  

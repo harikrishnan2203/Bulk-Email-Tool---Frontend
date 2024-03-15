@@ -1,0 +1,20 @@
+.form-control{
+    /* border: none !important; */
+    border: 1.5px solid #000000 !important;
+    /* border-radius: 0 !important; */
+}
+.form-control.is-invalid{
+    /* border: none !important; */
+    border: 1.5px solid #dc3545 !important;
+    /* border-radius: 0 !important; */
+}
+
+.form-check-input{
+    border: 1.5px solid #000 !important;
+}
+.centered {
+    position: absolute;
+    top: 50%;
+    transform: translate(0, -50%);
+    padding: 10px;
+  }

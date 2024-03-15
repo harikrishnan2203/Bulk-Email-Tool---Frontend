@@ -1,0 +1,19 @@
+[
+    {
+      "question": "Can I use Bulk Email Tool for free?",
+      "answer": "Yes, absolutely! Our Bulk Email Tool service is always free. Whether you're a small business owner, a nonprofit organization, or an individual, you can utilize our platform without any cost. We believe in providing accessible and efficient communication solutions to everyone, regardless of budget constraints. With our free service, you can send bulk emails effortlessly, reaching your audience with ease. Enjoy the benefits of streamlined communication without worrying about fees or subscriptions. Start using our Bulk Email Tool today and experience the convenience of reaching your contacts hassle-free!"
+    },
+    {
+      "question": "Can I send HTML emails?",
+      "answer": "Our Bulk Email Tool supports sending HTML emails, allowing you to create visually appealing and dynamic content for your recipients. HTML emails offer more flexibility in design and layout compared to plain text emails, allowing you to include images, links, styled text, and even interactive elements such as buttons or forms."
+    },
+    {
+      "question": "What about plain text emails?",
+      "answer": "With our Bulk Email Tool, you can easily compose and send plain text emails to your subscribers or recipients, ensuring that your message is delivered effectively and that you cater to the preferences of all your subscribers, whether they prefer HTML or plain text content."
+    },
+    {
+      "question": "How do you handle email bounces?",
+      "answer": "Our Bulk Email Tool automatically handles email bounces by identifying and filtering out invalid email addresses. When an email bounces, our system will stop sending emails to that address and notify you of the bounce. This helps maintain your email sender reputation and ensures that your messages reach the intended recipients."
+    }
+  ]
+  
