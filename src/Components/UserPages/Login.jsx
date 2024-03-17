@@ -1,14 +1,14 @@
 import Lottie from "lottie-react";
-import React, { useContext, useState } from "react";
+import React, { useState, useLayoutEffect } from "react";
 import * as yup from "yup";
 import { Col, Container, Form, Button, Row } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 import { login } from "../Utils/axios";
-import { toastSuccess, toastWarn } from "../Utils/toastify";
+import { ToastError, toastSuccess, toastWarn } from "../Utils/toastify";
 import { useFormik } from "formik";
 import loginAnimation from "../Home/Assets/Login1.json";
 import './Login.css'
-import Context from "../../Context/Context";
+import { Bars } from "react-loader-spinner";
 
 const initialValues = {
   email: "",
@@ -18,7 +18,21 @@ const initialValues = {
 function Login() {
   const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
+  const [btnCtrl, setBtnCtrl] = useState(true);
 
+  // useLayoutEffect(() => {
+  //   setShowNavbar(false);
+  
+  //   const authToken = localStorage.getItem('Auth-Token');
+  //   if (!authToken) {
+  //     // If there's no Auth token, allow navigation to all pages
+  //     return;
+  //   }
+  
+  //   // If there's an Auth token, navigate to the home page
+  //   navigate("/home");
+  // }, []);
+  
 
   // console.log(showPassword)
   const userValidation = yup.object().shape({
@@ -37,9 +51,11 @@ function Login() {
       initialValues: initialValues,
       validationSchema: userValidation,
       onSubmit: (values) => {
+        setBtnCtrl(false);
         login(values)
           .then((res) => {
             console.log(res);
+            setBtnCtrl(true)
             if (res.status === 200) {
               if (res.data.success === false) {
                 toastWarn(res.data.message);
@@ -53,8 +69,9 @@ function Login() {
           })
           .catch((err) => {
             console.log(err);
+            setBtnCtrl(true)
             if (err.response.data.success === false) {
-              toastWarn(err.response.data.message);
+              ToastError(err.response.data.message);
             }
           });
       },
@@ -117,7 +134,20 @@ function Login() {
 
             <div className="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
               <Button type="submit" variant="primary" size="lg">
-                Login
+                {btnCtrl ? (
+                  "Login"
+                ) : (
+                  <div className="d-flex align-items-center">
+                    <Bars
+                    height={20}
+                    width={40}
+                    color="#ffffff"
+                    ariaLabel="Loading"
+                    wrapperClass=""
+                    visible={true}
+                    />
+                  </div>
+                )}
               </Button>
             </div>
           </Form>
@@ -128,3 +158,5 @@ function Login() {
 }
 
 export default Login;
+
+

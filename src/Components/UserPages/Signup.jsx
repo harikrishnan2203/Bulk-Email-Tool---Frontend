@@ -5,6 +5,7 @@ import * as yup from "yup";
 import { useFormik } from "formik";
 import { signUp } from "../Utils/axios";
 import { toastSuccess, toastWarn } from "../Utils/toastify";
+import { Bars } from "react-loader-spinner";
 
 const initialValues = {
   name: "",
@@ -16,6 +17,7 @@ const initialValues = {
 function Signup() {
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
+  const [btnCtrl, setBtnCtrl] = useState(true);
 
   const userValidation = yup.object().shape({
     name: yup
@@ -41,9 +43,11 @@ function Signup() {
       initialValues: initialValues,
       validationSchema: userValidation,
       onSubmit: (values) => {
+        setBtnCtrl(false);
         signUp(values)
           .then((res) => {
             console.log(res);
+            setBtnCtrl(true)
             if (res.data.success === true) {
               toastSuccess(res.data.message);
               navigate("/");
@@ -51,6 +55,7 @@ function Signup() {
           })
           .catch((res) => {
             console.log(res);
+            setBtnCtrl(true);
             if (res.response.data.success === false) {
               toastWarn(res.response.data.message);
             }
@@ -140,7 +145,22 @@ function Signup() {
 
             <div className="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
               <Button type="submit" variant="primary" size="lg">
-                Register
+              {btnCtrl ? (
+                    "Register"
+                  ) : (
+                    <div className="d-flex flex-row align-items-center">
+                      <Bars
+                        height="20"
+                        width="40"
+                        color="#fff"
+                        ariaLabel="bars-loading"
+                        wrapperStyle={{}}
+                        wrapperClass=""
+                        visible={true}
+                      />
+                      <span></span>
+                    </div>
+                  )}
               </Button>
             </div>
           </Form>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Col, Container, Form, Button, Row } from "react-bootstrap";
 import { resetPassword } from '../Utils/axios';
 import { ToastError, toastSuccess, toastWarn } from '../Utils/toastify';
@@ -7,6 +7,7 @@ import { useFormik } from 'formik';
 import Lottie from 'lottie-react';
 import loginAnimation from "../Home/Assets/Login1.json";
 import { Link } from 'react-router-dom';
+import { Bars } from 'react-loader-spinner';
 
 const initialValues = {
   email: "",
@@ -14,6 +15,9 @@ const initialValues = {
 }
 
 function ForgotPassword() {
+  
+  const [btnCtrl, setBtnCtrl] = useState(true)
+
   const userValidation = yup.object().shape({
     email: yup
       .string()
@@ -21,15 +25,17 @@ function ForgotPassword() {
       .required("Email is required")
   });
 
-  const { values, handleChange, handleBlur, handleSubmit, errors, touched} = 
+  const { values, handleChange, resetForm, handleBlur, handleSubmit, errors, touched} = 
   useFormik({
     initialValues:initialValues, 
     validationSchema:userValidation,
     onSubmit: (values) => {
+      setBtnCtrl(false)
       resetPassword(values)
         .then((res) => {
           console.log(res)
           
+          setBtnCtrl(true);
           if ( res.data.mail.code === "EAUTH") {
             console.log("object not found");
             ToastError("Error Reseting Password");
@@ -41,9 +47,11 @@ function ForgotPassword() {
           else if (res.status === 200) {
             toastSuccess(res.data.message);
             }
+            resetForm()
         })
         .catch((err) => {
           console.log(err)
+          setBtnCtrl(true);
           if (err.response.data.success === false) {
             toastWarn(err.response.data.message)
           }
@@ -79,7 +87,20 @@ function ForgotPassword() {
 
             <div className="d-flex justify-content-center mx-4 mt-4 mb-3 mb-lg-4">
               <Button type="submit" variant="primary" size="lg">
-                Submit
+                {btnCtrl ? (
+                  "Get Link"
+                ) : (
+                  <div className='d-flex align-items-center'>
+                    <Bars
+                    height={20}
+                    width={40}
+                    color='#fff'
+                    ariaLabel='Loading'
+                    wrapperClass=''
+                    visible={true}
+                    />
+                  </div>
+                )}
               </Button>
             </div>
           </Form>

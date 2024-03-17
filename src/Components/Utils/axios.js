@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API = "http://localhost:5000";
+const API = "https://bulk-email-tool-backend-j6bh.onrender.com";
 
 export const signUp = (values) => {
     return axios({

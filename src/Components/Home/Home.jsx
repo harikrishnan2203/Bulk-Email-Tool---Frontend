@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useLayoutEffect } from "react";
 import { Card, Col, Container, Row } from "react-bootstrap";
 import "./Home.css";
 import Accordion from "./FAQ";
@@ -10,9 +10,14 @@ import step3 from "./Assets/step3.svg";
 import Footer  from "./Footer";
 import animationData from './Animation - 1709731031340.json'
 import Lottie from "lottie-react";
+import NavBar from '../Navbar/NavBar'
 
   function Home() {
+
+
     return (
+      <>
+      <NavBar/>
       <Container className="home-features">
         <Container className="sec-1">
           <Row className="row">
@@ -66,6 +71,7 @@ import Lottie from "lottie-react";
         <br/>
         <Footer/>
       </Container>
+      </>
     );
   }
 

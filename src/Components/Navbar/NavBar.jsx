@@ -6,10 +6,12 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import Offcanvas from 'react-bootstrap/Offcanvas';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import './NavBar.css'
 
 function OffcanvasExample() {
+
+  const navigate = useNavigate()
 
   const [click, setClick] = useState(true);
 
@@ -18,7 +20,7 @@ function OffcanvasExample() {
   const  handleLogout = () => {
     localStorage.removeItem("Auth-Token");
     localStorage.removeItem("user");
-    window.location.reload();
+    navigate("/")
   }
 
   return (

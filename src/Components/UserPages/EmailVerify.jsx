@@ -11,7 +11,7 @@ function EmailVerify() {
     const navigate = useNavigate()
 
     useEffect(() => {
-        window.alert("1")
+        // window.alert("1")
         emailverify(id).then((res) => {
             console.log(res)
             if (res.status === 200) {

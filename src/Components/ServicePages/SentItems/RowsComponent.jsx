@@ -21,7 +21,7 @@ const ExpandedComponent = ({ data }) => {
           <p>
             <strong>Subject:</strong> {data.subject}
           </p>
-          <p>
+          <p style={{width: "500px"}}>
             <strong>Body:</strong> <div></div> {plainTextBody}
           </p>
           <p>

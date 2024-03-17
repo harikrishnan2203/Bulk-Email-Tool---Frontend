@@ -1,163 +1,163 @@
-  import React, { useContext, useState } from "react";
-  import {Container, Form, Button, InputGroup, Row, Col} from "react-bootstrap";
-  import { useFormik } from "formik";
-  import ReactQuill from "react-quill";
-  import "react-quill/dist/quill.snow.css";
-  import './SendMail.css'
-  import Context from "../../../Context/Context";
-  import RecipientsModel from "../../Models/RecipientsModel";
-  import { toastSuccess } from "../../Utils/toastify";
-  import { useNavigate } from "react-router-dom";
-  import { SendEmail } from "../../Utils/axios";
+import React, { useContext, useState } from "react";
+import { Container, Form, Button, InputGroup, Row, Col } from "react-bootstrap";
+import { useFormik } from "formik";
+import ReactQuill from "react-quill";
+import "react-quill/dist/quill.snow.css";
+import "./SendMail.css";
+import Context from "../../../Context/Context";
+import RecipientsModel from "../../Models/RecipientsModel";
+import { toastSuccess } from "../../Utils/toastify";
+import { useNavigate } from "react-router-dom";
+import { SendEmail } from "../../Utils/axios";
 import { Bars } from "react-loader-spinner";
+import NavBar from "../../Navbar/NavBar.jsx";
 
-  const modules = {
-    toolbar: [
-      [{ header: [1, 2, false] }],
-      ["bold", "italic", "underline", "strike"],
-      [
-        { list: "ordered" },
-        { list: "bullet" },
-        { indent: "-1" },
-        { indent: "+1" },
-      ],
-      ["link", "image"],
-      ["clean"],
+const modules = {
+  toolbar: [
+    [{ header: [1, 2, false] }],
+    ["bold", "italic", "underline", "strike"],
+    [
+      { list: "ordered" },
+      { list: "bullet" },
+      { indent: "-1" },
+      { indent: "+1" },
     ],
-  };
+    ["link", "image"],
+    ["clean"],
+  ],
+};
 
-  const formats = [
-    "header",
-    "bold",
-    "italic",
-    "underline",
-    "strike",
-    "blockquote",
-    "list",
-    "bullet",
-    "indent",
-    "link",
-    "image",
-  ];
+const formats = [
+  "header",
+  "bold",
+  "italic",
+  "underline",
+  "strike",
+  "blockquote",
+  "list",
+  "bullet",
+  "indent",
+  "link",
+  "image",
+];
 
-  const init = {
-    recipients: "",
-    subject: "",
-    body: "",
-  };
+const init = {
+  recipients: "",
+  subject: "",
+  body: "",
+};
 
-  const SendMail = () => {
-    const contextData = useContext(Context);
-    const [btnCtrl, setBtnCtrl] = useState(true);
-    // const navigate = useNavigate()
+const SendMail = () => {
+  const contextData = useContext(Context);
+  const [btnCtrl, setBtnCtrl] = useState(true);
+  // const navigate = useNavigate()
 
-    // function buttonControl (){
-    //   setBtnCtrl(false)
-    // }
+  // function buttonControl (){
+  //   setBtnCtrl(false)
+  // }
 
-    const {
-      values,
-      handleChange,
-      setFieldTouched,
-      errors,
-      setFieldValue,
-      handleBlur,
-      touched,
-      resetForm,
-      handleSubmit,
-    } = useFormik({
-      initialValues: init,
-      onSubmit: (values) => {
-        // console.log(values);
-        setBtnCtrl(false);
-        const { recipients } = values;
-        let splitedData = recipients.split(",").map((e) => e.replace(/ /g, ""));
-        let arr = [];
-        for (let i = 0; i < splitedData.length; i++) {
-          if (
-            arr.indexOf(splitedData[i]) === -1 &&
-            splitedData[i].match(
-              /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
-            )
-          ) {
-            arr.push(splitedData[i]);
-            console.log(arr);
-          }
-        }
-  
-        SendEmail({...values , recipients: arr})
-        .then((res)=>{
-
-          console.log(res)
-          if (res.data.success === true) {
-            setBtnCtrl(true)
-            toastSuccess(res.data.message)
-            resetForm()
-          }
-        })
-        .catch((err)=>{
-
-          console.log(err)
-  
-        })
-      },
-      validate: (values) => {
-        let { recipients, subject, body } = values;
-        let errors = {};
-        if (!recipients) {
-          errors.recipients = "Emails is Required Select File!";
-        } else if (recipients.length < 5) {
-          errors.recipients = "Enter valid email";
-        }
-        if (!subject) {
-          errors.subject = "Subject is Required!";
-        } else if (subject.length < 3) {
-          errors.subject = "Subject must have atleast 3 characters.";
-        }
-        if (!body) {
-          errors.body = "Content is Required!";
-        }
-        return errors;
-      },
-    });
-
-    function dataModal(val) {
-      // Remove spaces from the input string
-      let cleanedData = val.replace(/ /g, "");
-      // Split the string into an array of email addresses using comma as separator
-      let dataArray = cleanedData.split(",");
-      let uniqueEmails = [];
-      let duplicates = 0;
-
-      // Loop through the array of email addresses
-      for (let i = 0; i < dataArray.length; i++) {
-        // Check if the email address is valid and not already in the uniqueEmails array
+  const {
+    values,
+    handleChange,
+    setFieldTouched,
+    errors,
+    setFieldValue,
+    handleBlur,
+    touched,
+    resetForm,
+    handleSubmit,
+  } = useFormik({
+    initialValues: init,
+    onSubmit: (values) => {
+      // console.log(values);
+      setBtnCtrl(false);
+      const { recipients } = values;
+      let splitedData = recipients.split(",").map((e) => e.replace(/ /g, ""));
+      let arr = [];
+      for (let i = 0; i < splitedData.length; i++) {
         if (
-          dataArray[i].match(
+          arr.indexOf(splitedData[i]) === -1 &&
+          splitedData[i].match(
             /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
-          ) &&
-          uniqueEmails.indexOf(dataArray[i]) === -1
+          )
         ) {
-          // If valid and unique, add it to the uniqueEmails array
-          uniqueEmails.push(dataArray[i]);
-        } else {
-          // If the email address is a duplicate or invalid, increment the duplicates count
-          duplicates++;
+          arr.push(splitedData[i]);
+          console.log(arr);
         }
       }
 
-      let result = {
-        duplicates: duplicates,
-        withoutDuplicates: uniqueEmails.length,
-        total: dataArray.length,
-        data: uniqueEmails,
-      };
-      // console.log(result)
+      SendEmail({ ...values, recipients: arr })
+        .then((res) => {
+          console.log(res);
+          if (res.data.success === true) {
+            setBtnCtrl(true);
+            toastSuccess(res.data.message);
+            resetForm();
+          }
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    },
+    validate: (values) => {
+      let { recipients, subject, body } = values;
+      let errors = {};
+      if (!recipients) {
+        errors.recipients = "Emails is Required Select File!";
+      } else if (recipients.length < 5) {
+        errors.recipients = "Enter valid email";
+      }
+      if (!subject) {
+        errors.subject = "Subject is Required!";
+      } else if (subject.length < 3) {
+        errors.subject = "Subject must have atleast 3 characters.";
+      }
+      if (!body) {
+        errors.body = "Content is Required!";
+      }
+      return errors;
+    },
+  });
 
-      return result;
+  function dataModal(val) {
+    // Remove spaces from the input string
+    let cleanedData = val.replace(/ /g, "");
+    // Split the string into an array of email addresses using comma as separator
+    let dataArray = cleanedData.split(",");
+    let uniqueEmails = [];
+    let duplicates = 0;
+
+    // Loop through the array of email addresses
+    for (let i = 0; i < dataArray.length; i++) {
+      // Check if the email address is valid and not already in the uniqueEmails array
+      if (
+        dataArray[i].match(
+          /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
+        ) &&
+        uniqueEmails.indexOf(dataArray[i]) === -1
+      ) {
+        // If valid and unique, add it to the uniqueEmails array
+        uniqueEmails.push(dataArray[i]);
+      } else {
+        // If the email address is a duplicate or invalid, increment the duplicates count
+        duplicates++;
+      }
     }
 
-    return (
+    let result = {
+      duplicates: duplicates,
+      withoutDuplicates: uniqueEmails.length,
+      total: dataArray.length,
+      data: uniqueEmails,
+    };
+    // console.log(result)
+
+    return result;
+  }
+
+  return (
+    <>
+      <NavBar />
       <Container>
         <Row>
           <h3>Send mail</h3>
@@ -278,7 +278,8 @@ import { Bars } from "react-loader-spinner";
           </Col>
         </Row>
       </Container>
-    );
-  };
+    </>
+  );
+};
 
-  export default SendMail;
+export default SendMail;

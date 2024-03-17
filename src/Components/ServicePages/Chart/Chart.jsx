@@ -2,6 +2,9 @@ import React, { useState, useEffect } from "react";
 import { Col, Container, Form, Row } from "react-bootstrap";
 import { ChartLogs } from "../../Utils/axios";
 import Chart from "chart.js/auto";
+// import NavBar from './src/Components/Navbar/NavBar.jsx'
+import NavBar from '../../Navbar/NavBar.jsx'
+
 
 function EmailChart() {
   const currentMontheFirstDay = new Date();
@@ -155,49 +158,54 @@ function EmailChart() {
   }, [emailData]);
 
   return (
-    <Container>
-      <Row>
-        <Col md={6}>
-          <h3>Chart</h3>
-          <Form>
-            <Row className="mb-3 align-items-end">
-              <Form.Group as={Col} controlId="startDate">
-                <Form.Label>Start Date:</Form.Label>
-                <Form.Control
-                  type="date"
-                  value={startDate.toISOString().split("T")[0]}
-                  onChange={(e) => setStartDate(new Date(e.target.value))}
-                />
-              </Form.Group>
-              <Form.Group as={Col} controlId="endDate">
-                <Form.Label>End Date:</Form.Label>
-                <Form.Control
-                  type="date"
-                  value={endDate.toISOString().split("T")[0]}
-                  onChange={(e) => setEndDate(new Date(e.target.value))}
-                />
-              </Form.Group>
-              <Form.Group as={Col} controlId="Count">
-                {" "}
-                <Form.Text>
-                  <span className="h2 text-black">
-                    Count:{"  "}
-                    <span className="text-primary">
-                      {emailData.reduce((acc, data) => acc + data.count, 0)}
+    <>
+      <NavBar />
+      <Container>
+        <Row>
+          <Col md={6}>
+            <h3>Chart</h3>
+            <Form>
+              <Row className="mb-3 align-items-end">
+                <Form.Group as={Col} controlId="startDate">
+                  <Form.Label>Start Date:</Form.Label>
+                  <Form.Control
+                    type="date"
+                    value={startDate.toISOString().split("T")[0]}
+                    onChange={(e) => setStartDate(new Date(e.target.value))}
+                  />
+                </Form.Group>
+                <Form.Group as={Col} controlId="endDate">
+                  <Form.Label>End Date:</Form.Label>
+                  <Form.Control
+                    type="date"
+                    value={endDate.toISOString().split("T")[0]}
+                    onChange={(e) => setEndDate(new Date(e.target.value))}
+                  />
+                </Form.Group>
+                <Form.Group as={Col} controlId="Count">
+                  {" "}
+                  <Form.Text>
+                    <span className="h2 text-black">
+                      Count:{"  "}
+                      <span className="text-primary">
+                        {emailData.reduce((acc, data) => acc + data.count, 0)}
+                      </span>
                     </span>
-                  </span>
-                </Form.Text>
-              </Form.Group>
-            </Row>
-            <div className="d-flex justify-content-center h4">Date<span>{" / "}</span>Count</div>
-            <canvas id="emailChart-1" width="400" height="200"></canvas>
-          </Form>
-        </Col>
-        {/* <Col md={6}>
+                  </Form.Text>
+                </Form.Group>
+              </Row>
+              <div className="d-flex justify-content-center h4">
+                Date<span>{" / "}</span>Count
+              </div>
+              <canvas id="emailChart-1" width="400" height="200"></canvas>
+            </Form>
+          </Col>
+          {/* <Col md={6}>
         <canvas id="emailChart-2" width="400" height="200"></canvas>
         </Col> */}
-      </Row>
-    </Container>
+        </Row>
+      </Container>
+    </>
   );
 }
 

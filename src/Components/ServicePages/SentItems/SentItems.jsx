@@ -4,6 +4,7 @@ import { GetLogs } from "../../Utils/axios";
 import DataTable from "react-data-table-component";
 import ExpandedComponent from "./RowsComponent";
 import { customStyles, style1 } from "./ChartStyle";
+import NavBar from "../../Navbar/NavBar.jsx";
 
 function SentItems() {
   const [sendData, setSendData] = useState([]);
@@ -20,7 +21,9 @@ function SentItems() {
     // Fetch data on component mount
     GetLogs().then((res) => {
       // console.log('sent items', res);
-      const sortData = res.data.mails.sort((a, b) => new Date(b.time) - new Date(a.time))
+      const sortData = res.data.mails.sort(
+        (a, b) => new Date(b.time) - new Date(a.time)
+      );
       setSendData(sortData);
     });
   }, []);
@@ -153,29 +156,33 @@ function SentItems() {
   ];
 
   return (
-    <Container>
-      <Row>
-        <Col>
-          <h3>Sent Items</h3>
-          <div className="d-flex justify-content-lg-end mb-3">
-            <Export />
-          </div>
-          <DataTable className="custom-table"
-            columns={columns}
-            data={sendData}
-            fixedHeader
-            pagination
-            highlightOnHover
-            pointerOnHover
-            expandableRows
-            expandableRowsComponent={ExpandedComponent}
-            expandOnRowClicked
-            expandableRowsHideExpander
-            customStyles={customStyles}
-          />
-        </Col>
-      </Row>
-    </Container>
+    <>
+      <NavBar />
+      <Container>
+        <Row>
+          <Col>
+            <h3>Sent Items</h3>
+            <div className="d-flex justify-content-lg-end mb-3">
+              <Export />
+            </div>
+            <DataTable
+              className="custom-table"
+              columns={columns}
+              data={sendData}
+              fixedHeader
+              pagination
+              highlightOnHover
+              pointerOnHover
+              expandableRows
+              expandableRowsComponent={ExpandedComponent}
+              expandOnRowClicked
+              expandableRowsHideExpander
+              customStyles={customStyles}
+            />
+          </Col>
+        </Row>
+      </Container>
+    </>
   );
 }
 
