@@ -1,5 +1,7 @@
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
+import UserGuideCarousel from './Carousels';
+
 
 
 function UserGuide(props) {
@@ -29,11 +31,12 @@ function UserGuide(props) {
           <li>Scroll down to "Signing in to Google" and click on <b>App passwords</b>.</li>
           <li>Choose the app or device type you want to generate the app password for (e.g., "Bulk Email").</li>
           <li>Click on <b>Generate</b>.</li>
-          <li>Copy the 12-digit app password generated and paste it into the password field in our website settings.</li>
+          <li>Copy the 16-digit app password generated and paste it into the password field in our website settings.</li>
           <li>Finally, compose and send emails using your email ID set in the settings.</li>
         </ol>
-        <h4>Video Tutorial:</h4>
-        <iframe title='Video Tutorial' src="https://drive.google.com/file/d/1c06YYYKA1nUOfbdRYUPzq9nHYLfkyzTR/preview" width="100%" height="480" allow="autoplay" ></iframe>
+        <h4>Find the below images </h4>
+        {/* <iframe title='Video Tutorial' src="https://drive.google.com/file/d/1c06YYYKA1nUOfbdRYUPzq9nHYLfkyzTR/preview" width="100%" height="480" allow="autoplay" ></iframe> */}
+        <UserGuideCarousel />
         <br />
         <br />
         <h4>Notes:</h4>

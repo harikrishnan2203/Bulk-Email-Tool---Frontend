@@ -1,0 +1,16 @@
+/* MyCarousel.css */
+
+/* Customize the color of the carousel control icons */
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    color: black;
+    background-color:rgb(36, 36, 36); /* Change the color to your desired color */
+    border-radius: 50%;
+}
+
+/* Optional: Adjust the size of the control icons */
+.carousel-control-prev-icon:before,
+.carousel-control-next-icon:before {
+  width: 25px; /* Adjust as needed */
+  height: 25px; /* Adjust as needed */
+}

@@ -6,7 +6,7 @@ import "react-quill/dist/quill.snow.css";
 import "./SendMail.css";
 import Context from "../../../Context/Context";
 import RecipientsModel from "../../Models/RecipientsModel";
-import { toastSuccess } from "../../Utils/toastify";
+import { ToastError, toastSuccess } from "../../Utils/toastify";
 import { useNavigate } from "react-router-dom";
 import { SendEmail } from "../../Utils/axios";
 import { Bars } from "react-loader-spinner";
@@ -97,6 +97,8 @@ const SendMail = () => {
         })
         .catch((err) => {
           console.log(err);
+          ToastError(err.response.data.error);
+          setBtnCtrl(true);
         });
     },
     validate: (values) => {

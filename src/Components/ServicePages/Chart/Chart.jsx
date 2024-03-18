@@ -7,13 +7,13 @@ import NavBar from '../../Navbar/NavBar.jsx'
 
 
 function EmailChart() {
-  const currentMontheFirstDay = new Date();
-  currentMontheFirstDay.setDate(1);
+  const currentMonthFirstDay = new Date();
+  currentMonthFirstDay.setDate(1);
   const [emailData, setEmailData] = useState([]);
-  const [startDate, setStartDate] = useState(currentMontheFirstDay);
+  const [startDate, setStartDate] = useState(currentMonthFirstDay);
   const [endDate, setEndDate] = useState(new Date());
 
-  console.log(emailData);
+  // console.log(emailData);
   useEffect(() => {
     fetchData();
   }, [startDate, endDate]);
@@ -44,25 +44,6 @@ function EmailChart() {
       .catch((error) => {
         console.error("Error fetching email data:", error);
       });
-  };
-
-  const scale = {
-    x: {
-      display: true,
-      title: {
-        display: true,
-        text: "Date",
-      },
-    },
-    y: {
-      display: true,
-      title: {
-        display: true,
-        text: "Count",
-      },
-      suggestedMin: -10,
-      suggestedMax: 200,
-    },
   };
 
   useEffect(() => {

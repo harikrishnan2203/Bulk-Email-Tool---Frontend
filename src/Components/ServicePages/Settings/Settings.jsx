@@ -7,20 +7,24 @@ import { CreateCred, DeleteCred, GetCred } from "../../Utils/axios";
 import { ToastError, toastSuccess, toastWarn } from "../../Utils/toastify";
 import NavBar from "../../Navbar/NavBar";
 
-
 const SettingsPage = () => {
-  const [data, setData] = useState({ email: "", password: "" });
+  const [data, setData] = useState({ email: "", password: "", provider: "" });
   const [type, setType] = useState("password");
   const [loadButton, setLoadButton] = useState(true);
   const [flag1, setFlag1] = useState(false);
   const [modalShow, setModalShow] = useState(false);
   const [credExist, setCredExist] = useState(true);
+  const [provider, setProvider] = useState("");
+
 
   // console.log(data)
   const handleSave = (e) => {
     e.preventDefault(); // Prevent the default form submission behavior
 
-    CreateCred(data)
+    const formData = { ...data, provider }
+    // console.log(data)
+
+    CreateCred(formData)
       .then((res) => {
         console.log(res);
         if (res.data.message === "Credential Created") {
@@ -46,18 +50,19 @@ const SettingsPage = () => {
       setCredExist(false);
       GetCred()
         .then((res) => {
-          // console.log(res)
+          console.log(res)
           setData({
             email: res.data.userCred.email,
             password: res.data.userCred.password,
           });
+          setProvider(res.data.userCred.provider)
           setFlag1(true);
           setLoadButton(true);
         })
         .catch((err) => {
           // console.log(err)
           if (err.code === "ERR_BAD_REQUEST") {
-            // ToastError(err.response.data.message || err.message)
+            ToastError(err.response.data.message || err.message)
           }
         });
     }
@@ -102,6 +107,19 @@ const SettingsPage = () => {
             <br />
             <div className="formStyle">
               <Form className="text-start" onSubmit={handleSave}>
+                <Form.Group controlId="provider" className="mb-3">
+                  <Form.Label>Email Provider</Form.Label>
+                  <Form.Control
+                    as="select"
+                    value={provider}
+                    onChange={(e) => setProvider(e.target.value)}
+                    required
+                  >
+                    <option value="">Select Email Provider</option>
+                    <option value="gmail">Gmail</option>
+                    <option value="outlook">Outlook</option>
+                  </Form.Control>
+                </Form.Group>
                 <Form.Group controlId="email">
                   <Form.Label>Email Address</Form.Label>
                   <Form.Control

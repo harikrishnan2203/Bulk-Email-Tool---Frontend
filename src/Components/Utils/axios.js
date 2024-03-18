@@ -1,6 +1,7 @@
 import axios from "axios";
 
-const API = "https://bulk-email-tool-backend-j6bh.onrender.com";
+// const API = "https://bulk-email-tool-backend-j6bh.onrender.com";
+const API = "http://localhost:5000";
 
 export const signUp = (values) => {
     return axios({
@@ -96,7 +97,7 @@ export const GetCred =  ()=>{
 }
   
 export const SendEmail = (values) => {
-    console.log(values)
+    // console.log(values)
     return axios({
         url: `${API}/mail/sendmail`,
         method: "post",
@@ -109,7 +110,7 @@ export const SendEmail = (values) => {
 }
 
 export const ChartLogs = (values) => {
-    console.log(values)
+    // console.log(values)
     return axios({
         url: `${API}/mail/chart`,
         method: "post",
@@ -122,7 +123,7 @@ export const ChartLogs = (values) => {
 }
 
 export const ChartAcceptanceData = (values) => {
-    console.log(values)
+    // console.log(values)
     return axios({
         url: `${API}/mail/chart`,
         method: "post",
