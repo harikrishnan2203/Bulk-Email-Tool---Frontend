@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ButtonGroup, NavLink } from 'react-bootstrap';
+import { NavLink } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
@@ -18,8 +18,7 @@ function OffcanvasExample() {
   const handleClick = () => setClick(!click);
 
   const  handleLogout = () => {
-    localStorage.removeItem("Auth-Token");
-    localStorage.removeItem("user");
+    localStorage.clear()
     navigate("/")
   }
 

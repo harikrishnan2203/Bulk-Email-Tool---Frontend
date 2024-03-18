@@ -1,70 +1,44 @@
-# Getting Started with Create React App
+## Bulk Email Tool - Frontend
+ - Welcome to Mail App, a web application designed to streamline email management tasks. This application provides features for composing and sending individual or bulk emails, visualizing email data through charts, managing sent items, and adjusting settings. Additionally, it offers user authentication and password management functionalities.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Features
+ - User Authentication: Secure authentication system ensures only authorized users can access the application.
+ - Email Composition: Users can compose and send individual emails or bulk emails to multiple recipients.
+ - Email Chart: Visual representation of email data offers insights into email activity and performance.
+ - Sent Items Management: View and manage the list of sent emails for reference and tracking purposes.
+ - Settings Configuration: Customize application settings to suit individual preferences and requirements.
+ - Forgot Password: Password recovery functionality allows users to reset their passwords if forgotten.
+ - Email Verification: Verify email addresses to ensure the authenticity of user accounts.
 
-## Available Scripts
+## Technology Stack
+Mail App is built using the following technologies and libraries:
 
-In the project directory, you can run:
+ - React: A JavaScript library for building user interfaces.
+ - React Router: A routing library for React applications, used for defining navigation paths and handling route rendering.
+ - React Bootstrap: A front-end framework for building responsive and mobile-first websites.
+ - axios: A promise-based HTTP client for making requests to the server.
+ - Chart.js: A JavaScript library for creating charts and graphs.
+ - Formik: A form library for React that helps with form validation, handling form submission, and managing form state.
+ - Yup: A JavaScript schema builder for value parsing and validation.
+ - React Toastify: A notification library for React applications.
+ - React Icons: A library of popular icon packs for React applications.
+ - Date-fns: A library for manipulating dates in JavaScript.
+ - html-to-text: A module for converting HTML into plain text.
 
-### `npm start`
+## Setup
+To run Mail App locally, follow these steps:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+ - Clone the repository to your local machine.
+ - Navigate to the project directory in your terminal.
+ - Install dependencies by running npm install or yarn install.
+ - Start the development server with npm start or yarn start.
+ - Open your web browser and navigate to http://localhost:3000 to view the application.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Usage
+ - Upon accessing the application, users will be directed to the login page. New users can sign up for an account, while existing users can log in using their credentials. Once logged in, users can access the main features of the application through the navigation menu.
 
-### `npm test`
+## Contributing
+ - Contributions to Mail App are welcome! If you encounter any bugs or have suggestions for improvements, please open an issue or submit a pull request.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## License
+ - Mail App is licensed under the MIT License. Feel free to use and modify the code according to your needs.

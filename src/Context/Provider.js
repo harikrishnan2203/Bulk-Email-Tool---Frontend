@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Context from './Context';
-import { useJwt } from "react-jwt";
+// import { useJwt } from "react-jwt";
 
 const Provider = (props) => {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -9,25 +9,15 @@ const Provider = (props) => {
     const [previewModal, setPreviewModal] = useState(false);
     const [logData, setLogData] = useState([]);
 
-    const token = localStorage.getItem("Auth-Token")
-    const { decodedToken } = useJwt(token || "");
+    // const token = localStorage.getItem("Auth-Token")
+    // const { decodedToken } = useJwt(token || "");
 
-    // useEffect(() => {
-    //   console.log("Decoded token:", decodedToken);
-    //   if (decodedToken && decodedToken.exp) {
-    //     setIsLoggedIn(true);
-    //     console.log("Logged in");
-    //   } else {
-    //     setIsLoggedIn(false);
-    //     console.log("Not logged in");
-    //   }
-    // }, [decodedToken]);
-    
-    // useEffect(() => {
-    //   console.log("Token from localStorage:", token);
-    // }, [token]);
-    
-    
+  
+    useEffect(()=>{
+        if (localStorage.getItem("Auth-Token")) {
+            setIsLoggedIn(true);
+            }
+      },[])
   
 
     return (
