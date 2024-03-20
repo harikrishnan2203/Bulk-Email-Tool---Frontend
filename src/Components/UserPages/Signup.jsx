@@ -6,6 +6,8 @@ import { useFormik } from "formik";
 import { signUp } from "../Utils/axios";
 import { toastSuccess, toastWarn } from "../Utils/toastify";
 import { Bars } from "react-loader-spinner";
+import Lottie from "lottie-react";
+import SinupAnimation from './Animation/SignupAnimation.json'
 
 const initialValues = {
   name: "",
@@ -65,8 +67,10 @@ function Signup() {
 
   return (
     <Container>
-      <Row>
-        <Col md={4}></Col>
+      <Row className="justify-content-around">
+        <Col md={5}>
+          <Lottie animationData={SinupAnimation} />
+        </Col>
         <Col md={4}>
         <h3>Signup</h3>
         <hr/>

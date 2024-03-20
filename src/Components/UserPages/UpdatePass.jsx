@@ -5,6 +5,9 @@ import * as yup from "yup";
 import { useFormik } from "formik";
 import { changePassword } from "../Utils/axios";
 import { ToastError, toastSuccess } from "../Utils/toastify";
+import Lottie from "lottie-react";
+import UpdateAnimation from './Animation/UpdateAnimation.json'
+import { Bars } from "react-loader-spinner";
 
 const initialValues = {
   password: "",
@@ -17,6 +20,7 @@ function UpdatePassword() {
   console.log(string)
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
+  const [btnCtrl, setBtnCtrl] = useState(true);
 
   const userValidation = yup.object().shape({
     password: yup
@@ -34,9 +38,11 @@ function UpdatePassword() {
       initialValues: initialValues,
       validationSchema: userValidation,
       onSubmit: (values) => {
+        setBtnCtrl(false)
         changePassword(values, string)
           .then((res) => {
-            console.log(res);
+            // console.log(res);
+            setBtnCtrl(true)
             if (res.data.success === true) {
               toastSuccess(res.data.message);
               navigate("/");
@@ -53,8 +59,10 @@ function UpdatePassword() {
 
   return (
     <Container>
-      <Row>
-        <Col md={4}></Col>
+      <Row className='centered justify-content-around'>
+        <Col md={4}>
+          <Lottie animationData={UpdateAnimation} />
+        </Col>
         <Col md={4}>
         <h3>Update Password</h3>
         <hr/>
@@ -98,7 +106,22 @@ function UpdatePassword() {
 
             <div className="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
               <Button type="submit" variant="primary" size="lg">
-                Update
+              {btnCtrl ? (
+                    "Register"
+                  ) : (
+                    <div className="d-flex flex-row align-items-center">
+                      <Bars
+                        height="20"
+                        width="40"
+                        color="#fff"
+                        ariaLabel="bars-loading"
+                        wrapperStyle={{}}
+                        wrapperClass=""
+                        visible={true}
+                      />
+                      <span></span>
+                    </div>
+                  )}
               </Button>
             </div>
           </Form>

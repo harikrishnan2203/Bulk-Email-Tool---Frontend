@@ -16,35 +16,53 @@ import NavBar from '../../Navbar/NavBar.jsx'
 
 const modules = {
   toolbar: [
-    [{ header: [1, 2, false] }],
-    ["bold", "italic", "underline", "strike"],
-    [
-      { list: "ordered" },
-      { list: "bullet" },
-      { indent: "-1" },
-      { indent: "+1" },
-    ],
-    ["link", "image"],
-    ["clean"],
-  ],
+    // Adding more header options
+    [{ 'header': '1'}, {'header': '2'}, { 'font': [] }],
+    
+    // Inline styles
+    ['bold', 'italic', 'underline', 'strike', 'blockquote'],
+    [{ 'color': [] }, { 'background': [] }],          // dropdown with defaults from theme
+    [{ 'script': 'sub'}, { 'script': 'super' }],      // superscript/subscript
+    
+    // List, direction, and indent
+    [{ 'list': 'ordered'}, { 'list': 'bullet'}, { 'indent': '-1'}, { 'indent': '+1' }],
+    [{ 'direction': 'rtl' }],                         // text direction
+
+    // Adding 'align' options
+    [{ 'align': [] }],
+
+    // Adding more media and format options
+    ['link', 'image', 'video'],
+
+    // History
+    ['undo', 'redo'],
+
+    // ['clean']                            
+  ]
 };
 
+
+
 const formats = [
-  "header",
-  "font",
-  "size",
-  "bold",
-  "italic",
-  "underline",
-  "strike",
-  "blockquote",
-  "list",
-  "bullet",
-  "indent",
-  "link",
-  "image",
-  "video",
-  "code-block",
+  'header',
+  'font',
+  'size',
+  'bold',
+  'italic',
+  'underline',
+  'strike',
+  'color',
+  'background',
+  'script',
+  'list',
+  'bullet',
+  'indent',
+  'link',
+  'image',
+  'align',
+  'direction',
+  'blockquote',
+  'code-block'
 ];
 
 const init = {

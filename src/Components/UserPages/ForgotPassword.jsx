@@ -5,7 +5,7 @@ import { ToastError, toastSuccess, toastWarn } from '../Utils/toastify';
 import * as yup from "yup";
 import { useFormik } from 'formik';
 import Lottie from 'lottie-react';
-import loginAnimation from "../Home/Assets/Login1.json";
+import ForgetAnimation from "./Animation/ForgetAnimation.json";
 import { Link } from 'react-router-dom';
 import { Bars } from 'react-loader-spinner';
 
@@ -60,10 +60,10 @@ function ForgotPassword() {
   })
   return (
     <Container>
-      <Row>
+      <Row className='centered justify-content-around'>
         <Col md={4}>
-          <h3>Bulk Mail App</h3>
-          <Lottie animationData={loginAnimation}/>
+          {/* <h3>Bulk Mail App</h3> */}
+          <Lottie animationData={ForgetAnimation}/>
         </Col>
         <Col md={4}>
         <h3>Forgot Password</h3>

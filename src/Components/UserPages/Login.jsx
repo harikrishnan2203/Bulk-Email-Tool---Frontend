@@ -1,5 +1,5 @@
 import Lottie from "lottie-react";
-import React, { useState, useLayoutEffect } from "react";
+import React, { useState } from "react";
 import * as yup from "yup";
 import { Col, Container, Form, Button, Row } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
@@ -19,19 +19,6 @@ function Login() {
   const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
   const [btnCtrl, setBtnCtrl] = useState(true);
-
-  // useLayoutEffect(() => {
-  //   setShowNavbar(false);
-  
-  //   const authToken = localStorage.getItem('Auth-Token');
-  //   if (!authToken) {
-  //     // If there's no Auth token, allow navigation to all pages
-  //     return;
-  //   }
-  
-  //   // If there's an Auth token, navigate to the home page
-  //   navigate("/home");
-  // }, []);
   
 
   // console.log(showPassword)

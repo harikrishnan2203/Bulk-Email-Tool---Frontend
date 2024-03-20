@@ -20,7 +20,8 @@ function App() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (localStorage.getItem("Auth-Token")) {
+    const AuthToken = localStorage.getItem("Auth-Token") 
+    if (AuthToken) {
       navigate("/home")
     }
   }, []);

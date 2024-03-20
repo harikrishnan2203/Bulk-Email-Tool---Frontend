@@ -56,3 +56,10 @@
   h5{
     padding-top: 10px;
   }
+
+  .ql-undo,
+.ql-redo {
+  display: inline-block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
