@@ -34,8 +34,11 @@ const modules = {
     // Adding more media and format options
     ['link', 'image', 'video'],
 
-    // History
-    ['undo', 'redo'],
+    // Code block
+    ['code-block'],
+
+    // Undo and Redo
+    [{ 'header': 'undo' }, { 'header': 'redo' }],
 
     // ['clean']                            
   ]
