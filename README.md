@@ -1,6 +1,9 @@
 ## Bulk Email Tool - Frontend
  - Welcome to Mail App, a web application designed to streamline email management tasks. This application provides features for composing and sending individual or bulk emails, visualizing email data through charts, managing sent items, and adjusting settings. Additionally, it offers user authentication and password management functionalities.
 
+## Check application
+ - Link - https://bulk-email-tool-22.netlify.app 
+
 ## Features
  - User Authentication: Secure authentication system ensures only authorized users can access the application.
  - Email Composition: Users can compose and send individual emails or bulk emails to multiple recipients.
