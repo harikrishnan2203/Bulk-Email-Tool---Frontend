@@ -9,7 +9,7 @@ const ProtectedRoute = (props) => {
 
   // Call useJwt hook unconditionally
   const { decodedToken, isLoading, error } = useJwt(token);
-  console.log(decodedToken)
+  // console.log(decodedToken)
   useEffect(() => {
     if (error) {
       console.error("There was an error decoding token:", error);

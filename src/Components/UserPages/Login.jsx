@@ -41,7 +41,7 @@ function Login() {
         setBtnCtrl(false);
         login(values)
           .then((res) => {
-            console.log(res);
+            // console.log(res);
             setBtnCtrl(true)
             if (res.status === 200) {
               if (res.data.success === false) {
@@ -55,7 +55,7 @@ function Login() {
             }
           })
           .catch((err) => {
-            console.log(err);
+            // console.log(err);
             setBtnCtrl(true)
             if (err.response.data.success === false) {
               ToastError(err.response.data.message);
