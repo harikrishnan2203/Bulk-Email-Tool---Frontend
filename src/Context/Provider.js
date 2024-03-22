@@ -8,12 +8,9 @@ const Provider = (props) => {
     const [exampleModalOfExcel, setExampleModalOfExcel] = useState(false);
     const [previewModal, setPreviewModal] = useState(false);
     const [logData, setLogData] = useState([]);
-
-    const token = localStorage.getItem("Auth-Token")
   
     useEffect(()=>{
-        if (token) {
-            
+        if (localStorage.getItem("Auth-Token")) {
             setIsLoggedIn(true);
             }
       },[])

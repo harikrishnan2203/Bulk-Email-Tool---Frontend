@@ -41,7 +41,7 @@ function UpdatePassword() {
         setBtnCtrl(false)
         changePassword(values, string)
           .then((res) => {
-            // console.log(res);
+            console.log(res);
             setBtnCtrl(true)
             if (res.data.success === true) {
               toastSuccess(res.data.message);
@@ -59,8 +59,8 @@ function UpdatePassword() {
 
   return (
     <Container>
-      <Row className='centered justify-content-around'>
-        <Col md={4}>
+      <Row className='justify-content-around'>
+        <Col md={6}>
           <Lottie animationData={UpdateAnimation} />
         </Col>
         <Col md={4}>
@@ -107,7 +107,7 @@ function UpdatePassword() {
             <div className="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
               <Button type="submit" variant="primary" size="lg">
               {btnCtrl ? (
-                    "Register"
+                    "Update"
                   ) : (
                     <div className="d-flex flex-row align-items-center">
                       <Bars
