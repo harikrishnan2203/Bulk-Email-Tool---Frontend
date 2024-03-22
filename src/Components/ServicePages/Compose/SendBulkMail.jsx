@@ -1,15 +1,13 @@
-import React, { useContext, useState } from "react";
+import React, {useState} from "react";
 import { Container, Form, Button, InputGroup, Row, Col } from "react-bootstrap";
 import { useFormik } from "formik";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import "./SendMail.css";
-import Context from "../../../Context/Context";
 import RecipientsModel from "../../Models/RecipientsModel";
 import { ExcelRenderer } from "react-excel-renderer";
 import { SendEmail } from "../../Utils/axios";
-import { ToastError, toastSuccess } from "../../Utils/toastify";
-import { useNavigate } from "react-router-dom";
+import { toastSuccess } from "../../Utils/toastify";
 import { Bars } from "react-loader-spinner";
 import NavBar from '../../Navbar/NavBar.jsx'
 
