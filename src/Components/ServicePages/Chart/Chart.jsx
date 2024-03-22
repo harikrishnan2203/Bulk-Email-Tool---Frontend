@@ -25,7 +25,7 @@ function EmailChart() {
 
     ChartLogs(values)
       .then((res) => {
-        // console.log(res.data.data)
+        console.log(res)
         // console.log(res.data.mails)
         if (res.data) {
           const groupedData = res.data.data.reduce((acc, curr) => {

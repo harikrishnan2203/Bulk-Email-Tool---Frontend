@@ -9,12 +9,11 @@ const Provider = (props) => {
     const [previewModal, setPreviewModal] = useState(false);
     const [logData, setLogData] = useState([]);
 
-    // const token = localStorage.getItem("Auth-Token")
-    // const { decodedToken } = useJwt(token || "");
-
+    const token = localStorage.getItem("Auth-Token")
   
     useEffect(()=>{
-        if (localStorage.getItem("Auth-Token")) {
+        if (token) {
+            
             setIsLoggedIn(true);
             }
       },[])
